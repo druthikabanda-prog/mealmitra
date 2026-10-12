@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #faf7f2;
+    color: #1f2937;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1ebd9;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4c5a9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8a380;
+}
+
+/* Glass & Card styles */
+.cream-card {
+  background: #ffffff;
+  border: 1px solid #ebdcc0;
+  box-shadow: 0 4px 20px -2px rgba(80, 60, 30, 0.05);
+}
+
+.cream-card-subtle {
+  background: #faf6ee;
+  border: 1px solid #ebdcc0;
+}
+
+.cream-pill {
+  background-color: #f5edd9;
+  border: 1px solid #ebdcc0;
+}
+
+.pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

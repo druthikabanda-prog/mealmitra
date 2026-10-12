@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#c2410c" />
+    </linearGradient>
+  </defs>
+  <!-- Background with rounded corners -->
+  <rect width="192" height="192" rx="42" fill="url(#bgGrad)" />
+  
+  <!-- Outer warm accent circle -->
+  <circle cx="96" cy="96" r="68" fill="none" stroke="#fef08a" stroke-width="3" stroke-dasharray="6 4" opacity="0.6" />
+  
+  <!-- Food bowl silhouette -->
+  <path d="M 46 102 C 46 136 70 148 96 148 C 122 148 146 136 146 102 Z" fill="#ffffff" />
+  <ellipse cx="96" cy="102" rx="50" ry="14" fill="#fef3c7" />
+  
+  <!-- Sprout / Nourishing Leaf / Heart symbol rising from food -->
+  <path d="M 96 52 C 96 52 82 66 82 78 C 82 86 88 92 96 92 C 104 92 110 86 110 78 C 110 66 96 52 96 52 Z" fill="url(#heartGrad)" />
+  <path d="M 96 68 Q 112 60 120 74 Q 108 84 96 76" fill="#84cc16" opacity="0.9" />
+  
+  <!-- Steam swirls -->
+  <path d="M 72 74 Q 70 66 74 60" stroke="#fef3c7" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8" />
+  <path d="M 120 74 Q 124 66 120 60" stroke="#fef3c7" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8" />
+</svg>

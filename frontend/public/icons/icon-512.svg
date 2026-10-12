@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+    <linearGradient id="heartGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#c2410c" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad512)" />
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#fef08a" stroke-width="8" stroke-dasharray="16 10" opacity="0.6" />
+  <path d="M 122 272 C 122 362 186 394 256 394 C 326 394 390 362 390 272 Z" fill="#ffffff" />
+  <ellipse cx="256" cy="272" rx="134" ry="38" fill="#fef3c7" />
+  <path d="M 256 138 C 256 138 218 176 218 208 C 218 230 234 246 256 246 C 278 246 294 230 294 208 C 294 176 256 138 256 138 Z" fill="url(#heartGrad512)" />
+  <path d="M 256 182 Q 298 160 320 198 Q 288 224 256 202" fill="#84cc16" opacity="0.9" />
+  <path d="M 192 198 Q 186 176 198 160" stroke="#fef3c7" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.8" />
+  <path d="M 320 198 Q 330 176 320 160" stroke="#fef3c7" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.8" />
+</svg>
