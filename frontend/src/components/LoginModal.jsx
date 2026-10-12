@@ -31,10 +31,20 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess, onOpenRegi
     }
   };
 
-  const fillDemo = (demoEmail, demoPwd) => {
-    setEmail(demoEmail);
-    setPassword(demoPwd);
+  const handleDirectLogin = async (loginEmail, loginPwd) => {
+    setEmail(loginEmail);
+    setPassword(loginPwd);
     setError(null);
+    setLoading(true);
+    try {
+      const data = await login({ email: loginEmail.trim().toLowerCase(), password: loginPwd });
+      onLoginSuccess(data.user);
+      onClose();
+    } catch (err) {
+      setError(err.message || 'Invalid credentials.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -72,32 +82,32 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess, onOpenRegi
           <div className="bg-amber-50/80 rounded-2xl p-3 border border-amber-200/80">
             <div className="text-[11px] font-bold text-amber-900 uppercase tracking-wider mb-2 flex items-center space-x-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              <span>Hackathon Demo Fast-Login:</span>
+              <span>1-Click Instant Login (Click to Sign In):</span>
             </div>
             <div className="grid grid-cols-3 gap-2">
               <button
                 type="button"
-                onClick={() => fillDemo('vinnethvarma9@gmail.com', 'Bangarm@2')}
+                onClick={() => handleDirectLogin('vinnethvarma9@gmail.com', 'Bangarm@2')}
                 className="px-2 py-1.5 rounded-xl bg-white hover:bg-emerald-50 border border-emerald-300 text-[11px] font-semibold text-emerald-900 transition-colors text-left flex flex-col shadow-xs"
               >
                 <span className="text-emerald-700 font-bold truncate">Vinneth Varma</span>
-                <span className="text-[10px] text-slate-500">Your Account</span>
+                <span className="text-[10px] text-slate-500">1-Click Login ⚡</span>
               </button>
               <button
                 type="button"
-                onClick={() => fillDemo('donor@canteen.edu', 'Password123!')}
+                onClick={() => handleDirectLogin('donor@canteen.edu', 'Password123!')}
                 className="px-2 py-1.5 rounded-xl bg-white hover:bg-orange-50 border border-amber-200 text-[11px] font-semibold text-amber-900 transition-colors text-left flex flex-col shadow-xs"
               >
                 <span className="text-orange-700 font-bold truncate">Chef Marcus</span>
-                <span className="text-[10px] text-slate-500">Demo Donor</span>
+                <span className="text-[10px] text-slate-500">1-Click Login ⚡</span>
               </button>
               <button
                 type="button"
-                onClick={() => fillDemo('recipient@foodbank.org', 'Password123!')}
+                onClick={() => handleDirectLogin('recipient@foodbank.org', 'Password123!')}
                 className="px-2 py-1.5 rounded-xl bg-white hover:bg-emerald-50 border border-amber-200 text-[11px] font-semibold text-amber-900 transition-colors text-left flex flex-col shadow-xs"
               >
                 <span className="text-emerald-700 font-bold truncate">Sarah</span>
-                <span className="text-[10px] text-slate-500">Demo Recipient</span>
+                <span className="text-[10px] text-slate-500">1-Click Login ⚡</span>
               </button>
             </div>
           </div>

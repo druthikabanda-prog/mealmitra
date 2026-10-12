@@ -78,9 +78,17 @@ export async function login({ email, password }) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
   });
-  const data = await res.json().catch(() => ({}));
+  let data;
+  try {
+    data = await res.json();
+  } catch (err) {
+    data = {};
+  }
   if (!res.ok) {
-    throw new Error(data.error || 'Login failed. Please check your credentials.');
+    if (res.status === 502 || res.status === 504 || res.status === 503) {
+      throw new Error(`Cannot reach Flask backend (HTTP ${res.status}). Verify Flask server is running on port 5000.`);
+    }
+    throw new Error(data.error || 'Invalid email or password. Please verify your credentials.');
   }
   setSession(data.token, data.user);
   return data;
