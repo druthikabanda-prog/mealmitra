@@ -2,9 +2,10 @@
  * MealMitra - Progressive Web App Service Worker.
  * Caches frontend app shell assets for offline availability.
  * Does NOT cache sensitive auth credentials or passwords.
+ * Bypasses all /api/ requests so API always goes directly to the backend.
  */
 
-const CACHE_NAME = 'mealmitra-v2';
+const CACHE_NAME = 'mealmitra-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -34,7 +35,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Stale-While-Revalidate for app assets, Network-First for API
+// Fetch: Stale-While-Revalidate for app assets only
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
@@ -43,27 +44,13 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Bypass Vite dev internal requests
-  if (url.pathname.startsWith('/@vite') || url.pathname.startsWith('/@fs') || url.pathname.startsWith('/@id') || url.pathname.includes('vite')) {
+  // DO NOT INTERCEPT API calls or backend ports (direct network only)
+  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/uploads/') || url.port === '5000') {
     return;
   }
 
-  // API calls: Network-first with offline 503 fallback
-  if (url.pathname.startsWith('/api/')) {
-    event.respondWith(
-      fetch(event.request).catch(() => {
-        return new Response(
-          JSON.stringify({
-            offline: true,
-            error: 'You are currently offline. Using local MealMitra offline cache.'
-          }),
-          {
-            headers: { 'Content-Type': 'application/json' },
-            status: 503
-          }
-        );
-      })
-    );
+  // Bypass Vite dev internal requests
+  if (url.pathname.startsWith('/@vite') || url.pathname.startsWith('/@fs') || url.pathname.startsWith('/@id') || url.pathname.includes('vite')) {
     return;
   }
 
