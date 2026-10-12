@@ -74,22 +74,30 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess, onOpenRegi
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
               <span>Hackathon Demo Fast-Login:</span>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onClick={() => fillDemo('vinnethvarma9@gmail.com', 'Bangarm@2')}
+                className="px-2 py-1.5 rounded-xl bg-white hover:bg-emerald-50 border border-emerald-300 text-[11px] font-semibold text-emerald-900 transition-colors text-left flex flex-col shadow-xs"
+              >
+                <span className="text-emerald-700 font-bold truncate">Vinneth Varma</span>
+                <span className="text-[10px] text-slate-500">Your Account</span>
+              </button>
               <button
                 type="button"
                 onClick={() => fillDemo('donor@canteen.edu', 'Password123!')}
-                className="px-2.5 py-1.5 rounded-xl bg-white hover:bg-orange-50 border border-amber-200 text-[11px] font-semibold text-amber-900 transition-colors text-left flex flex-col shadow-xs"
+                className="px-2 py-1.5 rounded-xl bg-white hover:bg-orange-50 border border-amber-200 text-[11px] font-semibold text-amber-900 transition-colors text-left flex flex-col shadow-xs"
               >
-                <span className="text-orange-700 font-bold">Chef Marcus (Donor)</span>
-                <span className="text-[10px] text-slate-500">Canteen Manager</span>
+                <span className="text-orange-700 font-bold truncate">Chef Marcus</span>
+                <span className="text-[10px] text-slate-500">Demo Donor</span>
               </button>
               <button
                 type="button"
                 onClick={() => fillDemo('recipient@foodbank.org', 'Password123!')}
-                className="px-2.5 py-1.5 rounded-xl bg-white hover:bg-emerald-50 border border-amber-200 text-[11px] font-semibold text-amber-900 transition-colors text-left flex flex-col shadow-xs"
+                className="px-2 py-1.5 rounded-xl bg-white hover:bg-emerald-50 border border-amber-200 text-[11px] font-semibold text-amber-900 transition-colors text-left flex flex-col shadow-xs"
               >
-                <span className="text-emerald-700 font-bold">Sarah (Recipient)</span>
-                <span className="text-[10px] text-slate-500">Student Food Pantry</span>
+                <span className="text-emerald-700 font-bold truncate">Sarah</span>
+                <span className="text-[10px] text-slate-500">Demo Recipient</span>
               </button>
             </div>
           </div>
