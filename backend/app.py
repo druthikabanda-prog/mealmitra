@@ -247,16 +247,7 @@ def login():
     user_row = cursor.fetchone()
     conn.close()
 
-    valid_password = False
-    if user_row:
-        valid_password = check_password_hash(user_row["password_hash"], password)
-        if not valid_password and email == "vinnethvarma9@gmail.com" and password in ["Bangarm@2", "Password123!"]:
-            valid_password = True
-        elif not valid_password and email == "vinnethvarma9@gmail.com":
-            # Direct match fallback
-            valid_password = (password == "Bangarm@2" or password == "Password123!")
-
-    if not user_row or not valid_password:
+    if not user_row or not check_password_hash(user_row["password_hash"], password):
         logger.warning("Failed login attempt for: '%s'", email)
         return jsonify({"success": False, "error": "Invalid email or password. Please check your credentials."}), 401
 
